@@ -9,11 +9,14 @@ package dip.lab2;
  * @author Dylan Barter
  */
 public class BaggageServiceTipCalculator implements TipCalculator {
-    private static final double MAX_BILL = 100.00;
-    private static final String BILL_ENTRY_ERR =
-            "Error: bill must be between " + MIN_BILL + " and "
-            + MAX_BILL;
-
+    private double minBill = 0.00;
+    private double goodRate = 0.20;
+    private double fairRate = 0.15;
+    private double poorRate = 0.10;
+    private double maxBill = 100.00;
+    private String billEntryError =
+            "Error: bill must be between " + minBill + " and "
+            + maxBill;
     private double baseTipPerBag = 1.00; // set default value
     private int bagCount;
 
@@ -36,26 +39,24 @@ public class BaggageServiceTipCalculator implements TipCalculator {
 
         switch(serviceQuality) {
             case GOOD:
-                tip = baseTipPerBag * bagCount * (1 + GOOD_RATE);
+                tip = baseTipPerBag * bagCount * (1 + goodRate);
                 break;
             case FAIR:
-                tip = baseTipPerBag * bagCount * (1 + FAIR_RATE);
+                tip = baseTipPerBag * bagCount * (1 + fairRate);
                 break;
             case POOR:
-                tip = baseTipPerBag * bagCount * (1 + POOR_RATE);
+                tip = baseTipPerBag * bagCount * (1 + poorRate);
                 break;
         }
 
         return tip;
     }
 
-    @Override
     public final void setServiceRating(ServiceQuality q) {
         // No need to validate because enums provide type safety!
         serviceQuality = q;
     }
 
-    @Override
     public ServiceQuality getServiceQuality() {
         return serviceQuality;
     }
@@ -82,6 +83,62 @@ public class BaggageServiceTipCalculator implements TipCalculator {
                     "error: base tip must be greater than or equal to zero");
         }
         this.baseTipPerBag = baseTipPerBag;
+    }
+
+    public double getMinBill() {
+        return minBill;
+    }
+
+    public void setMinBill(double minBill) {
+        if(minBill < 0) {
+            throw new IllegalArgumentException(
+                    "error: bill minimum must be greater than or equal to zero");
+        }
+        this.minBill = minBill;
+    }
+
+    public double getGoodRate() {
+        return goodRate;
+    }
+
+    public void setGoodRate(double goodRate) {
+        this.goodRate = goodRate;
+    }
+
+    public double getFairRate() {
+        return fairRate;
+    }
+
+    public void setFairRate(double fairRate) {
+        this.fairRate = fairRate;
+    }
+    
+    public double getPoorRate() {
+        return poorRate;
+    }
+
+    public void setPoorRate(double poorRate) {
+        this.poorRate = poorRate;
+    }
+
+    public double getMaxBill() {
+        return maxBill;
+    }
+
+    public void setMaxBill(double maxBill) {
+        if(maxBill < 0) {
+            throw new IllegalArgumentException(
+                    "error: bill max must be greater than or equal to zero");
+        }
+        this.maxBill = maxBill;
+    }
+
+    public String getBillEntryError() {
+        return billEntryError;
+    }
+
+    public void setBillEntryError(String billEntryError) {
+        this.billEntryError = billEntryError;
     }
 
 }
