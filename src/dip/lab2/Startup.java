@@ -20,47 +20,22 @@ import javax.swing.JOptionPane;
  */
 public class Startup {
      
-    public static void main(String[] args) {
-        //Initialize bag count
-        int bagNum = 6;
-        //Initialize food bill amount
-        double billAmt = 88.00;
+    public static void main(String[] args) {       
         
-        //Determine the quality of service via the ENUM
-        
-//        ServiceQuality serviceQual = ServiceQuality.FAIR;
-        ServiceQuality serviceQual = ServiceQuality.GOOD;
-//        ServiceQuality serviceQual = ServiceQuality.POOR;
-        
-        //This portion is strictly to make the system out string look prettier
-        String quality = "";
-        switch(serviceQual){
-            case GOOD:
-                quality = "good";
-                break;
-            case FAIR:
-                quality = "fair";
-                break;
-            case POOR:
-                quality = "poor";
-                break;
-        }      
-        
-        //Create each tip calculator instance through the TipCalculator interface (Liskov)
-        TipCalculator bagTipCalculator = new BaggageServiceTipCalculator(serviceQual, bagNum);
-        TipCalculator foodTipCalculator = new FoodServiceTipCalculator(serviceQual, billAmt);
+        //Create each tip calculator instance through the TipCalculator interface (Liskov).  Insert service quality and either bag numbers or bill amount
+        TipCalculator bagTipCalculator = new BaggageServiceTipCalculator(ServiceQuality.GOOD, 6);
+        TipCalculator foodTipCalculator = new FoodServiceTipCalculator(ServiceQuality.FAIR, 96.85);
         
         //Create instance of high-level class
         
         TipCalculatorService CalcService = new TipCalculatorService();
-        //TipCalculatorService CalcService = new TipCalculatorService(footTipCalculator);
         
         //formatting purposes
         NumberFormat nf = NumberFormat.getCurrencyInstance();
         
         //Print out results
-        System.out.println("If the service is " + quality + ", the tip amount for a baggage handler with " + bagNum + " bags is: " + nf.format(CalcService.calculateTip(bagTipCalculator)));        
-        System.out.println("If the service is " + quality + ", the tip amount for a restaurant bill of " + nf.format(billAmt) + " is: " +nf.format(CalcService.calculateTip(foodTipCalculator)));
+        System.out.println("The tip amount for the baggage handler is: " + nf.format(CalcService.calculateTip(bagTipCalculator)));        
+        System.out.println("The tip amount for the restaurant bill is: " + nf.format(CalcService.calculateTip(foodTipCalculator)));
     }
 
 }

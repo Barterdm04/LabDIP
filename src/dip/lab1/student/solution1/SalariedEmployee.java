@@ -9,23 +9,11 @@ package dip.lab1.student.solution1;
 public class SalariedEmployee implements Employee {
     private double annualSalary;
     private double annualBonus;
-    WageType wageType = WageType.SALARIED;
-    
-    /** default constructor. Is this the best way to go? */
-    public SalariedEmployee() {}
 
-    /**
-     * Convenience constructor. Is this the best way to go?
-     * @param annualSalary - the employee's annual salary
-     * @param annualBonus - a bonus benefit, if any
-     */
+
     public SalariedEmployee(double annualSalary, double annualBonus) {
         setAnnualSalary(annualSalary);
         setAnnualBonus(annualBonus);
-    }
-
-    public double getAnnualSalary() {
-        return annualSalary;
     }
     
     public void setAnnualSalary(double annualSalary) {

@@ -10,9 +10,6 @@ public class HourlyEmployee implements Employee {
     private double hourlyRate;
     private double totalHrsForYear;
 
-    /** default constructor. Is this the best way to go? */
-    public HourlyEmployee() {}
-
     /**
      * Convenience constructor. Is this the best way to go?
      * @param hourlyRate - the rate per hour that the employee is paid
