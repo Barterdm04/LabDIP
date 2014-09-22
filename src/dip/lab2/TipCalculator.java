@@ -16,7 +16,7 @@ public interface TipCalculator {
     public static final double FAIR_RATE = 0.15;
     public static final double POOR_RATE = 0.10;
     public ServiceQuality getServiceQuality();
-    public void setServiceRating(ServiceQuality q);
-    public double getTip();
+    public abstract void setServiceRating(ServiceQuality q);
+    public abstract double getTip();
     
 }
