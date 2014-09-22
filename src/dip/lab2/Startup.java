@@ -34,8 +34,8 @@ public class Startup {
         NumberFormat nf = NumberFormat.getCurrencyInstance();
         
         //Print out results
-        System.out.println("The tip amount for the baggage handler is: " + nf.format(CalcService.calculateTip(bagTipCalculator)));        
-        System.out.println("The tip amount for the restaurant bill is: " + nf.format(CalcService.calculateTip(foodTipCalculator)));
+        System.out.println("The tip amount for the baggage handler is: " + nf.format(CalcService.getCalculatedTip(bagTipCalculator)));        
+        System.out.println("The tip amount for the restaurant bill is: " + nf.format(CalcService.getCalculatedTip(foodTipCalculator)));
     }
 
 }

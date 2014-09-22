@@ -12,7 +12,7 @@ package dip.lab2;
  */
 public class TipCalculatorService {
     
-    public double calculateTip(TipCalculator t){
+    public double getCalculatedTip(TipCalculator t){
         return t.getTip();
     }
 }
