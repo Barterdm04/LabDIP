@@ -3,16 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-package dip.lab2;
+package dip.lab1.student.solution1;
 
 /**
  *
- * @author dbarter1
+ * @author DB7
  */
-public class TipCalculatorService {
-    
-    public double calculateTip(TipCalculator t){
-        return t.getTip();
+public enum WageType {
+        SALARIED,
+        HOURLY
     }
-}

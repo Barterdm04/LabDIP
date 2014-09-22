@@ -21,22 +21,46 @@ import javax.swing.JOptionPane;
 public class Startup {
      
     public static void main(String[] args) {
+        //Initialize bag count
         int bagNum = 6;
+        //Initialize food bill amount
         double billAmt = 88.00;
         
-        ServiceQuality serviceQual = ServiceQuality.FAIR;
-//        ServiceQuality serviceQual = ServiceQuality.GOOD;
+        //Determine the quality of service via the ENUM
+        
+//        ServiceQuality serviceQual = ServiceQuality.FAIR;
+        ServiceQuality serviceQual = ServiceQuality.GOOD;
 //        ServiceQuality serviceQual = ServiceQuality.POOR;
-                
+        
+        //This portion is strictly to make the system out string look prettier
+        String quality = "";
+        switch(serviceQual){
+            case GOOD:
+                quality = "good";
+                break;
+            case FAIR:
+                quality = "fair";
+                break;
+            case POOR:
+                quality = "poor";
+                break;
+        }      
+        
+        //Create each tip calculator instance through the TipCalculator interface (Liskov)
         TipCalculator bagTipCalculator = new BaggageServiceTipCalculator(serviceQual, bagNum);
         TipCalculator foodTipCalculator = new FoodServiceTipCalculator(serviceQual, billAmt);
         
-        TipCalculatorService CalcService = new TipCalculatorService(bagTipCalculator);
+        //Create instance of high-level class
+        
+        TipCalculatorService CalcService = new TipCalculatorService();
         //TipCalculatorService CalcService = new TipCalculatorService(footTipCalculator);
         
-        CalcService.calculateTip();
+        //formatting purposes
+        NumberFormat nf = NumberFormat.getCurrencyInstance();
         
-        
+        //Print out results
+        System.out.println("If the service is " + quality + ", the tip amount for a baggage handler with " + bagNum + " bags is: " + nf.format(CalcService.calculateTip(bagTipCalculator)));        
+        System.out.println("If the service is " + quality + ", the tip amount for a restaurant bill of " + nf.format(billAmt) + " is: " +nf.format(CalcService.calculateTip(foodTipCalculator)));
     }
 
 }
