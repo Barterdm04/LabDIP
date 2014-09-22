@@ -18,6 +18,6 @@ public class TipCalculatorService {
     }
     
     public void calculateTip(){
-        tipCalculator.getTip();
+        System.out.println("Your tip amount is: $" + tipCalculator.getTip());
     }
 }

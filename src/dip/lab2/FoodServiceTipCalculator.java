@@ -6,7 +6,7 @@ package dip.lab2;
  *
  * Any other best practice violations? Fix them too.
  *
- * @author your name goes here
+ * @author Dylan Barter
  */
 public class FoodServiceTipCalculator implements TipCalculator{
     private static final String BILL_ENTRY_ERR =

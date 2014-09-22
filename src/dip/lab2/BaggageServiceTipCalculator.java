@@ -6,7 +6,7 @@ package dip.lab2;
  *
  * Any other best practice violations? Fix them too.
  *
- * @author your name goes here
+ * @author Dylan Barter
  */
 public class BaggageServiceTipCalculator implements TipCalculator {
     private static final double MAX_BILL = 100.00;
@@ -19,12 +19,17 @@ public class BaggageServiceTipCalculator implements TipCalculator {
 
     private ServiceQuality serviceQuality;
 
+    
     public BaggageServiceTipCalculator(ServiceQuality q, int bags) {
         this.setServiceRating(q); // perform validation
         this.setBagCount(bags);
-        baseTipPerBag = 1.00; 
     }
-
+    public BaggageServiceTipCalculator(ServiceQuality q, int bags, double baseTipPerBag){
+        this.setServiceRating(q);
+        this.setBagCount(bags);
+        this.setBaseTipPerBag(baseTipPerBag);
+    }
+    
     @Override
     public double getTip() {
         double tip = 0.00; // always initialize local variables
@@ -59,7 +64,7 @@ public class BaggageServiceTipCalculator implements TipCalculator {
         return bagCount;
     }
 
-    public final void setBagCount(int bagCount) {
+    public void setBagCount(int bagCount) {
         if(bagCount < 0) {
             throw new IllegalArgumentException(
                     "bag count must be greater than or equal to zero");

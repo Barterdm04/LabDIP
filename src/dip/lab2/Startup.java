@@ -16,11 +16,25 @@ import javax.swing.JOptionPane;
  *    high-level class. Did it work? Are the low-level instances
  *    interchangeable? The DIP requires this.
  * 
- * @author your name goes here
+ * @author Dylan Barter
  */
 public class Startup {
      
     public static void main(String[] args) {
+        int bagNum = 6;
+        double billAmt = 88.00;
+        
+        ServiceQuality serviceQual = ServiceQuality.FAIR;
+//        ServiceQuality serviceQual = ServiceQuality.GOOD;
+//        ServiceQuality serviceQual = ServiceQuality.POOR;
+                
+        TipCalculator bagTipCalculator = new BaggageServiceTipCalculator(serviceQual, bagNum);
+        TipCalculator foodTipCalculator = new FoodServiceTipCalculator(serviceQual, billAmt);
+        
+        TipCalculatorService CalcService = new TipCalculatorService(bagTipCalculator);
+        //TipCalculatorService CalcService = new TipCalculatorService(footTipCalculator);
+        
+        CalcService.calculateTip();
         
         
     }
