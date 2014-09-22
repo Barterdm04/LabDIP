@@ -17,6 +17,9 @@ public class SalariedEmployee implements Employee {
     }
     
     public void setAnnualSalary(double annualSalary) {
+        if (annualSalary < 0){
+            throw new IllegalArgumentException("Salary must be greater than or equal to zero");
+        }
         this.annualSalary = annualSalary;
     }
 
@@ -25,6 +28,9 @@ public class SalariedEmployee implements Employee {
     }
 
     public void setAnnualBonus(double annualBonus) {
+        if (annualBonus < 0){
+            throw new IllegalArgumentException("Bonus must be greater than or equal to zero");
+        }
         this.annualBonus = annualBonus;
     }
     

@@ -25,6 +25,9 @@ public class HourlyEmployee implements Employee {
     }
 
     public void setHourlyRate(double hourlyRate) {
+        if (hourlyRate < 0){
+            throw new IllegalArgumentException("HourlyRate must be greater than or equal to zero");
+        }
         this.hourlyRate = hourlyRate;
     }
 
@@ -33,6 +36,9 @@ public class HourlyEmployee implements Employee {
     }
 
     public void setTotalHrsForYear(double totalHrsForYear) {
+        if (totalHrsForYear < 0){
+            throw new IllegalArgumentException("Hour total must be greater than or equal to zero");
+        }
         this.totalHrsForYear = totalHrsForYear;
     }
     @Override
